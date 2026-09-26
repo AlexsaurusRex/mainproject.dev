@@ -222,7 +222,10 @@ function fitAnchors() {
     const a = FORMATION_ANCHORS[key];
     const section = document.getElementById(key);
     if (!section) continue;
-    const sectionTop = section.getBoundingClientRect().top;
+    // Measure from the section's own corner, so pinch-zoom (which moves where the
+    // browser thinks the screen edge is) can't shift the result
+    const sectionBox = section.getBoundingClientRect();
+    const sectionTop = sectionBox.top, sectionLeft = sectionBox.left;
     const cam = CAMERA_POSITIONS[SECTION_KEYS.indexOf(key)];
     const depth = cam.z - FORMATION_OFFSETS[key].z;                     // camera to formation
     const unitsPerPx = 2 * depth * Math.tan(halfFov) / viewH();
@@ -234,7 +237,7 @@ function fitAnchors() {
       if (!top || !bottom) continue;
       const t = top.getBoundingClientRect(), b = bottom.getBoundingClientRect();
       const gap = b.top - t.bottom;
-      px = (t.left + t.width / 2 + b.left + b.width / 2) / 2 + (a.shiftX || 0) * gap;
+      px = (t.left + t.width / 2 + b.left + b.width / 2) / 2 - sectionLeft + (a.shiftX || 0) * gap;
       py = (t.bottom + b.top) / 2 - sectionTop + (a.shiftY || 0) * gap;  // middle of the gap
       radiusPx = a.fill * gap / 2;
       center = shapeBounds(key);             // fit the shape's own height into the gap
@@ -243,7 +246,7 @@ function fitAnchors() {
       const el = document.querySelector(a.element);
       if (!el) continue;
       const r = el.getBoundingClientRect();
-      px = r.left + r.width / 2 + (a.shiftX || 0) * r.width;           // element center, on screen
+      px = r.left - sectionLeft + r.width / 2 + (a.shiftX || 0) * r.width;  // element center, on screen
       py = r.top - sectionTop + r.height / 2 + (a.shiftY || 0) * r.height; // ...when its section is showing
       radiusPx = a.ring * r.width / 2;
       shapeRadius = TORUS_RING_RADIUS;
@@ -273,7 +276,13 @@ function sphereVisibility(sectionKey, i) {
 // Re-fit whenever the layout could have changed
 fitAnchors();
 window.addEventListener('load', fitAnchors);
-window.addEventListener('resize', fitAnchors);
+// (only when the screen size really changed; phones fire resize mid-pinch too)
+let fitW = viewW(), fitH = viewH();
+window.addEventListener('resize', () => {
+  if (viewW() === fitW && viewH() === fitH) return;
+  fitW = viewW(); fitH = viewH();
+  fitAnchors();
+});
 if (document.fonts) document.fonts.ready.then(fitAnchors);
 
 //Vortex "drain" position
