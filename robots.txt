@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Original full-size photos are not part of the site
+Disallow: /Full%20Size%20Photos/
+
+Sitemap: https://mainproject.dev/sitemap.xml

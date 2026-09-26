@@ -1,0 +1,4 @@
+# Keep these out of the public repo
+Full Size Photos/
+.DS_Store
+*.zip

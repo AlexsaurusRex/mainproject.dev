@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alex Main | Robotics &amp; Engineering | Mill Valley, CA</title>
+    <meta name="description" content="Alex Main is a Mill Valley, CA engineer in Marin County building robot learning and hardware projects. Former lobbyist, MBA. San Francisco Bay Area." />
+    <link rel="canonical" href="https://mainproject.dev/" />
+
+    <!-- Tab icon: teal wireframe sphere (SVG for modern browsers, PNG/ICO fallbacks, iPhone home screen) -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- Link previews (texts, Slack, LinkedIn, X) -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Alex Main" />
+    <meta property="og:title" content="Alex Main | Robotics &amp; Engineering | Mill Valley, CA" />
+    <meta property="og:description" content="Engineer in Mill Valley, Marin County building robot learning and hardware projects. Former lobbyist, MBA." />
+    <meta property="og:url" content="https://mainproject.dev/" />
+    <meta property="og:image" content="https://mainproject.dev/Me2.jpg" />
+    <meta property="og:image:alt" content="Alex Main" />
+    <meta property="profile:first_name" content="Alex" />
+    <meta property="profile:last_name" content="Main" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@Alexsaurus_Rexx" />
+    <meta name="twitter:title" content="Alex Main | Robotics &amp; Engineering | Mill Valley, CA" />
+    <meta name="twitter:description" content="Engineer in Mill Valley, Marin County building robot learning and hardware projects." />
+    <meta name="twitter:image" content="https://mainproject.dev/Me2.jpg" />
+
+    <!-- Tells search engines who this site is about (name, job, town, profiles) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Alex Main",
+      "url": "https://mainproject.dev/",
+      "image": "https://mainproject.dev/Me2.jpg",
+      "jobTitle": "Robotics & Engineering",
+      "description": "Engineer in Mill Valley, California (Marin County, San Francisco Bay Area) building robot learning and hardware projects. Former corporate lobbyist with an MBA.",
+      "homeLocation": {
+        "@type": "Place",
+        "name": "Mill Valley, Marin County, San Francisco Bay Area",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Mill Valley",
+          "addressRegion": "CA",
+          "addressCountry": "US"
+        }
+      },
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "California State University, Sacramento" },
+        { "@type": "CollegeOrUniversity", "name": "Cal Poly Humboldt" }
+      ],
+      "knowsAbout": ["Robotics", "Reinforcement Learning", "ROS2", "Isaac Sim", "PCB Design", "Embedded Systems", "Python", "C++"],
+      "email": "mailto:alex@mainproject.dev",
+      "sameAs": [
+        "https://github.com/AlexsaurusRex",
+        "https://x.com/Alexsaurus_Rexx"
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <!-- 3D background layer -->
+    <div id="bg-canvas"></div>
+
+    <!-- Phones held sideways: asks the visitor to turn their phone upright (see style.css, nav.js) -->
+    <div id="rotate-notice" aria-live="polite">
+      <div class="rotate-phone" aria-hidden="true"></div>
+      <p class="rotate-text">Turn your phone upright</p>
+      <p class="rotate-sub">this site is built for portrait</p>
+    </div>
+
+    <!-- nav -->
+    <nav id="nav-mobile">
+      <button id="nav-toggle">☰</button>
+      <div id="nav-links">
+        <a href="#hero">// home</a>
+        <a href="#about">// about</a>
+        <a href="#skills">// skills</a>
+        <a href="#projects">// projects</a>
+        <a href="#contact">// contact</a>
+        <a href="#dog">// dog</a>
+      </div>
+    </nav>
+
+    <main>
+      <section id="hero">
+        <div class="hero-content">
+          <h1>Alex Main</h1>
+          <p class="tagline">Welcome. Choose your experience.</p>
+          <div class="hero-buttons">
+            <a href="#about" class="nav-btn">guided tour</a>
+            <!-- Opens the ☰ menu so visitors can pick a section themselves (see nav.js) -->
+            <button type="button" id="self-guided-btn" class="self-guided-btn">choose your own<br>adventure</button>
+            <!-- Phones: replaces the button above when tapped (see nav.js) -->
+            <div id="hero-menu" class="hero-menu" role="navigation" aria-label="Sections" hidden>
+              <a href="#about">// about</a>
+              <a href="#skills">// skills</a>
+              <a href="#projects">// projects</a>
+              <a href="#contact">// contact</a>
+              <a href="#dog">// dog</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="about-content">
+          <img src="Me2.jpg" alt="Alex Main, engineer in Mill Valley, CA" class="about-photo" />
+          <!-- <span>About</span> -->
+          <p class="about-body">I spent twelve years as a corporate lobbyist and earned an MBA along the way, watching technology reshape the world from the policy side. Its pace convinced me not to watch from the sidelines anymore, and I left to study engineering full time and build real things.</p>
+          <p class="about-body">Since January 2026, I’ve focused on fundamentals: programming, applied linear algebra, electronics, physics: learned from first principles and tested at the workbench. I use AI to accelerate, not replace, my understanding. Now I’m going deep into robotic reinforcement learning.</p>
+          <p class="about-body">After a career spent working with people, they're still at the center of how I think about building. This site documents my journey. I live in Mill Valley, in Marin County just north of San Francisco, with my dog, Penny.</p>
+        </div>
+        <a href="#skills" class="nav-btn">continue</a>
+      </section>
+
+      <section id="skills">
+        <div class="skills-content">
+          <span>Skills</span>
+          <div class="skills-groups">
+            <div class="skills-group collapse-on-phones start-open">
+              <h3 class="skills-heading">Current Focus: Robot Learning</h3>
+              <ul class="skills-items">
+                <li><strong>Reinforcement learning:</strong> PyTorch, Isaac Lab</li>
+                <li><strong>Simulation:</strong> Isaac Sim, Gazebo</li>
+                <li><strong>Robotics middleware:</strong> ROS2</li>
+                <li><strong>Now building:</strong> Sim-to-Real Self-Balancing Robot</li>
+              </ul>
+            </div>
+            <div class="skills-group collapse-on-phones start-open">
+              <h3 class="skills-heading">Side Quests</h3>
+              <ul class="skills-items">
+                <li>KiCad (PCB design), Autodesk Fusion (CAD), 3D Printing, embedded C/C++</li>
+              </ul>
+            </div>
+            <div class="skills-group collapse-on-phones">
+              <h3 class="skills-heading">What I Learned from 12 Years of Lobbying</h3>
+              <ul class="skills-items">
+                <li><strong>Negotiation &amp; coalition-building:</strong> I've negotiated with legislators, executives, and opposing interests with high stakes on every side.</li>
+                <li><strong>Business &amp; policy judgment:</strong> MBA, 2023. I understand what makes technology fundable, regulatable, and deployable, not just buildable.</li>
+                <li><strong>Working through ambiguity:</strong> I spent a career making progress when the rules, players, and goals were constantly changing.</li>
+                <li><strong>People first:</strong> I explain complex ideas to non-experts and build trust across very different stakeholders.</li>
+              </ul>
+            </div>
+            <div class="skills-group collapse-on-phones">
+              <h3 class="skills-heading">Foundations <span class="skills-note">(since January 2026)</span></h3>
+              <ul class="skills-items">
+                <li><strong>Math &amp; physics:</strong> applied linear algebra, circuit analysis, classical mechanics/electromagnetism</li>
+                <li><strong>Electronics:</strong> circuit design, bench testing, hardware</li>
+                <li><strong>Programming:</strong> Python, C++, Git, Agentic Coding</li>
+              </ul>
+            </div>
+            <div class="skills-group collapse-on-phones">
+              <h3 class="skills-heading">Education</h3>
+              <ul class="skills-items">
+                <li>Self-directed engineering study, 2026–present</li>
+                <li>MBA, CSUS, 2023</li>
+                <li>BA, Cal Poly Humboldt, 2013</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <a href="#projects" class="nav-btn">continue</a>
+      </section>
+
+      <section id="projects">
+        <div class="projects-content">
+          <div class="project-header">
+            <h2 class="project-title">Self-Balancing Robot</h2>
+            <p class="project-sub">Designed and built from scratch, featuring IMU sensor fusion, real-time PID control, custom PCB hardware, and closed-loop motor control. Classic control platform for eventual RL/simulation.</p>
+          </div>
+          <!-- Swipe gallery: add or remove <img> tags freely; the previews update automatically -->
+          <div class="gallery">
+            <div class="gallery-track">
+              <img src="projects/balance-bot/01.jpg" alt="Self-balancing robot, photo 1" class="gallery-slide" loading="lazy" />
+              <img src="projects/balance-bot/02.jpg" alt="Self-balancing robot, photo 2" class="gallery-slide" loading="lazy" />
+              <img src="projects/balance-bot/03.jpg" alt="Self-balancing robot, photo 3" class="gallery-slide" loading="lazy" />
+              <img src="projects/balance-bot/04.jpg" alt="Self-balancing robot, photo 4" class="gallery-slide" loading="lazy" />
+              <img src="projects/balance-bot/05.jpg" alt="Self-balancing robot, photo 5" class="gallery-slide" loading="lazy" />
+            </div>
+            <button class="gallery-arrow gallery-prev" type="button" aria-label="Previous photo">‹</button>
+            <button class="gallery-arrow gallery-next" type="button" aria-label="Next photo">›</button>
+            <div class="gallery-thumbs"></div>
+          </div>
+        </div>
+        <a href="#contact" class="nav-btn">continue</a>
+      </section>
+
+      <section id="contact">
+      <div class="contact-card">
+        <div class="contact-info">
+          <h2 class="contact-name">Alex Main</h2>
+          <p class="contact-title">Mill Valley, CA</p>
+        </div>
+        <div class="contact-links">
+          <p class="contact-label">Contact</p>
+          <a href="https://github.com/AlexsaurusRex" target="_blank" class="contact-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            AlexsaurusRex
+          </a>
+          <a href="https://x.com/Alexsaurus_Rexx" target="_blank" class="contact-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            @Alexsaurus_Rexx
+          </a>
+          <a href="mailto:alex@mainproject.dev" class="contact-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          alex@mainproject.dev
+          </a>
+        </div>
+      </div>
+      <a href="#dog" class="nav-btn">continue</a>
+    </section>
+
+      <section id="dog">
+        <div class="dog-card">
+          <img src="PENNY.jpg" alt="Penny the dachshund" class="dog-photo" />
+          <div class="dog-info">
+            <h2 class="dog-name">PENNY</h2>
+            <p class="dog-title">O.A.P.C</p>
+            <p class="dog-desc">Penny is an Organic Autonomous Pest Control (OAPC) System. Strong vs. rats, moles. Weak vs. coyotes. Toss up: deer. *Maintenance: 2 meals/day, belly rubs*</p>
+          </div>
+        </div>
+        <!-- Opens the ☰ menu (see nav.js) -->
+        <button type="button" id="menu-btn" class="menu-btn" aria-label="Open menu">☰</button>
+      </section>
+    </main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="formationsv2.js"></script>
+<script>
+  // Load the phone or desktop 3D background (phones: under 768px wide)
+  const bgScript = document.createElement('script');
+  bgScript.src = window.innerWidth < 768 ? 'mobile.js' : 'script.js';
+  document.body.appendChild(bgScript);
+</script>
+<script src="gallery.js"></script>
+<script src="nav.js"></script>
+<!-- <script src="formation-generator.js"></script> -->
+
+  </body>
+</html>
