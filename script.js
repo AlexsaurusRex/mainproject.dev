@@ -2,18 +2,22 @@
 const scene = new THREE.Scene();
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(viewW(), viewH());
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // cap for high-DPI screens
 document.getElementById('bg-canvas').appendChild(renderer.domElement);
 
-const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 20000); // 20000 = draw distance, far enough that nothing gets cut off
+const camera = new THREE.PerspectiveCamera(50, viewW() / viewH(), 1, 20000); // 20000 = draw distance, far enough that nothing gets cut off
 camera.position.z = 1000;
 
-// Handle window resize
+// Handle window resize. viewW/viewH (pager.js) ignore pinch-zoom, and phones
+// fire lots of resizes while pinching, so skip them when the size hasn't changed.
+let sceneW = viewW(), sceneH = viewH();
 window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
+  if (viewW() === sceneW && viewH() === sceneH) return;
+  sceneW = viewW(); sceneH = viewH();
+  camera.aspect = viewW() / viewH();
   camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(viewW(), viewH());
 });
 
 // Wireframe material
@@ -63,7 +67,7 @@ function lerp(a, b, t) {
 
 // Get scroll progress as section index + fraction
 function getScrollState() {
-  const scrollY = window.scrollY;
+  const scrollY = pageY;   // page position from pager.js (the page itself never scrolls)
   const sectionHeight = document.getElementById('hero').offsetHeight;
   const totalSections = SECTION_KEYS.length;
 
@@ -170,7 +174,7 @@ function projectedBox(key) {
   const cam = CAMERA_POSITIONS[SECTION_KEYS.indexOf(key)];
   const view = camera.clone();
   view.position.set(cam.x, cam.y, cam.z);
-  view.aspect = window.innerWidth / window.innerHeight;
+  view.aspect = viewW() / viewH();
   view.updateProjectionMatrix();
   view.updateMatrixWorld();
   let top = Infinity, bottom = -Infinity, left = Infinity, right = -Infinity;
@@ -178,7 +182,7 @@ function projectedBox(key) {
   FORMATIONS[key].forEach((_, i) => {
     const p = getFormationPos(key, FORMATIONS[key], i);
     v.set(p.x, p.y, p.z).project(view);
-    const sx = (v.x + 1) / 2 * window.innerWidth, sy = (1 - v.y) / 2 * window.innerHeight;
+    const sx = (v.x + 1) / 2 * viewW(), sy = (1 - v.y) / 2 * viewH();
     top = Math.min(top, sy); bottom = Math.max(bottom, sy);
     left = Math.min(left, sx); right = Math.max(right, sx);
   });
@@ -221,7 +225,7 @@ function fitAnchors() {
     const sectionTop = section.getBoundingClientRect().top;
     const cam = CAMERA_POSITIONS[SECTION_KEYS.indexOf(key)];
     const depth = cam.z - FORMATION_OFFSETS[key].z;                     // camera to formation
-    const unitsPerPx = 2 * depth * Math.tan(halfFov) / window.innerHeight;
+    const unitsPerPx = 2 * depth * Math.tan(halfFov) / viewH();
 
     let px, py, radiusPx, shapeRadius, center = { cx: 0, cy: 0 };
     if (a.between) {
@@ -246,8 +250,8 @@ function fitAnchors() {
     }
     const fitScale = radiusPx * unitsPerPx / shapeRadius;
     anchorFits[key] = {
-      x: cam.x + (px - window.innerWidth / 2) * unitsPerPx - center.cx * fitScale,
-      y: cam.y - (py - window.innerHeight / 2) * unitsPerPx - center.cy * fitScale,
+      x: cam.x + (px - viewW() / 2) * unitsPerPx - center.cx * fitScale,
+      y: cam.y - (py - viewH() / 2) * unitsPerPx - center.cy * fitScale,
       scale: fitScale
     };
     // 3D shapes can look bigger / off-center through the camera (parts lean toward it),
@@ -297,33 +301,7 @@ function getFormationPos(sectionKey, formation, i) {
 
 animate();
 
-// Smooth scrolling, shared by nav links and "continue" buttons
-function smoothScrollTo(targetId, duration) {
-  const targetSection = document.getElementById(targetId);
-  if (!targetSection) return;
-
-  const targetY = targetSection.offsetTop;
-  const startY = window.scrollY;
-  const distance = targetY - startY;
-  let startTime = null;
-
-  function scrollStep(timestamp) {
-    if (!startTime) startTime = timestamp;
-    const elapsed = timestamp - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-
-    // Ease in-out
-    const ease = progress < 0.5
-      ? 2 * progress * progress
-      : -1 + (4 - 2 * progress) * progress;
-
-    window.scrollTo(0, startY + distance * ease);
-
-    if (progress < 1) requestAnimationFrame(scrollStep);
-  }
-
-  requestAnimationFrame(scrollStep);
-}
+// Smooth scrolling (smoothScrollTo) lives in pager.js
 
 // Nav links
 document.querySelectorAll('nav a').forEach(link => {

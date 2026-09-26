@@ -234,10 +234,11 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 <script src="formationsv2.js"></script>
+<script src="pager.js"></script>
 <script>
   // Load the phone or desktop 3D background (phones: under 768px wide)
   const bgScript = document.createElement('script');
-  bgScript.src = window.innerWidth < 768 ? 'mobile.js' : 'script.js';
+  bgScript.src = viewW() < 768 ? 'mobile.js' : 'script.js';
   document.body.appendChild(bgScript);
 </script>
 <script src="gallery.js"></script>

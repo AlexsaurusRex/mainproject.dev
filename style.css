@@ -947,14 +947,24 @@ section {
 }
 
 /* No free scrolling between sections (desktop and phones). The page itself
-   can't be scrolled by wheel, keyboard or touch; visitors move between sections
-   with the buttons and menus (which scroll the page in code, and still work).
-   Scrollable areas inside a section (About text, Skills list, robot gallery)
-   still scroll, and stop at their ends instead of dragging the page along. */
+   is only one screen tall, so there's nothing for wheel, keyboard, touch or
+   pinch-zoom to scroll. All the sections live in <main>, which is pinned to
+   the screen and slid up and down by pager.js when the buttons and menus are
+   used. Scrollable areas inside a section (About text, Skills list, robot
+   gallery) still scroll, and stop at their ends. */
 html,
 body {
+  height: 100%;
   overflow: hidden;
   overscroll-behavior: none;
+}
+
+main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  will-change: transform;           /* smooth slides between sections */
 }
 
 .about-content,

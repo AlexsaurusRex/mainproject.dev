@@ -4,7 +4,7 @@ const navLinks = document.getElementById('nav-links');
 
 // True on phone-sized screens (same 768px cutoff as the rest of the site)
 function isMobileWidth() {
-  return window.innerWidth < 768;
+  return viewW() < 768;   // viewW (pager.js) ignores pinch-zoom
 }
 
 navToggle.addEventListener('click', () => {
